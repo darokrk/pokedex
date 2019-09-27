@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getData } from "../actions/index";
 
+import PokemonCard from "./PokemonCard";
+
 const mapStateToProps = state => {
-  return { articles: state.remoteArticles.slice(0, 10) };
+  return { articles: state.remoteArticles };
 };
 
 export class Post extends Component {
@@ -12,11 +14,13 @@ export class Post extends Component {
   }
   render() {
     return (
-      <ul className="list-group list-group-flush">
-        {this.props.articles.map(el => (
-          <li className="list-group-item" key={el.id}>
-            {el.title}
-          </li>
+      <ul className="d-flex flex-wrap p-0 mt-3">
+        {this.props.articles.map((pokemon, index) => (
+          <PokemonCard
+            key={new Date().getTime() + index}
+            name={pokemon.name}
+            url={pokemon.url}
+          />
         ))}
       </ul>
     );
