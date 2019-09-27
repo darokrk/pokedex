@@ -4,16 +4,10 @@ import { connect } from "react-redux";
 import { getPokemonData } from "../actions/index";
 
 const mapStateToProps = ({ pokemon }) => {
-  return { name: pokemon };
+  return { name: pokemon.name, imageUrl: pokemon.sprites };
 };
 
 export class Pokemon extends Component {
-  // state = {
-  //   name: "",
-  //   pokemonIndex: "",
-  //   imageUrl: ""
-  // };
-
   componentDidMount() {
     const { pokemonIndex } = this.props.match.params;
 
@@ -21,7 +15,15 @@ export class Pokemon extends Component {
   }
 
   render() {
-    return <div>{this.props.name}</div>;
+    return (
+      <div>
+        {this.props.name}
+        <img
+          src={this.props.imageUrl ? this.props.imageUrl.front_default : ""}
+          alt={`${this.props.name} image`}
+        />
+      </div>
+    );
   }
 }
 

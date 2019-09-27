@@ -43,7 +43,7 @@ function getData() {
 function getPokemonData(pokemonIndex) {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`)
     .then(response => response.json())
-    .then(data => data.name)
+    .then(data => data)
     .catch(
       error =>
         `Your Call For Data went wrong, ${error} check your call if it's correct!`

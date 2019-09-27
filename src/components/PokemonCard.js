@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import spinner from "../assets/25.gif";
 
 import styled from "styled-components";
 
@@ -33,7 +34,8 @@ class PokemonCard extends Component {
   state = {
     name: "",
     imageUrl: "",
-    pokemonIndex: ""
+    pokemonIndex: "",
+    imageLoading: true
   };
 
   componentDidMount() {
@@ -57,10 +59,23 @@ class PokemonCard extends Component {
         <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
           <Card className="card">
             <h5 className="card-header">{this.state.pokemonIndex}</h5>
+            {this.state.imageLoading ? (
+              <img
+                src={spinner}
+                style={{ width: "5em", height: "5em" }}
+                className="card-img-top rounded mx-auto d-block mt-2"
+              ></img>
+            ) : null}
             <SpriteImg
               className="card-img-top rounded mx-auto mt-2"
               src={this.state.imageUrl}
               alt=""
+              onLoad={() => this.setState({ imageLoading: false })}
+              style={
+                this.state.imageLoading
+                  ? { display: "none" }
+                  : { display: "block" }
+              }
             />
             <div className="card-body mx-auto">
               <h6 className="card-title">

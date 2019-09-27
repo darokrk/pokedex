@@ -11,7 +11,7 @@ const initialState = {
   articles: [],
   alert: "",
   remoteArticles: [],
-  pokemon: []
+  pokemon: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -51,7 +51,7 @@ const rootReducer = (state = initialState, action) => {
     case DATA_POKEMON_LOADED: {
       return {
         ...state,
-        pokemon: [action.payload]
+        pokemon: { ...action.payload }
       };
     }
     default:
