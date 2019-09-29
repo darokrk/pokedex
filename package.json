@@ -2,7 +2,7 @@
   "name": "tutek-z-neta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://darokrk.github.io/pokemon-game",
+  "homepage": "https://darokrk.github.io/pokedex",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.1.1",
