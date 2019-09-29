@@ -4,16 +4,20 @@ import { getPokemonData, getPokemonSpecies } from "../actions/index";
 
 import PokemonType from "./PokemonType";
 import PokemonImg from "./PokemonImg";
+import PokemonName from "./PokemonName";
 import PokemonStats from "./PokemonStats";
+import PokemonDesc from "./PokemonDesc";
 
 const mapStateToProps = ({ pokemon, pokemonSpec }) => {
   return {
     pokemonIndex: pokemon.id,
+    pokemon: pokemon,
     name: pokemon.name,
     imageUrl: pokemon.sprites,
     types: pokemon.types,
     stats: pokemon.stats,
-    pokemonSpec: pokemonSpec
+    pokemonSpec: pokemonSpec,
+    pokemonDesc: pokemonSpec.description
   };
 };
 
@@ -23,18 +27,6 @@ export class Pokemon extends Component {
     this.props.getPokemonData(pokemonIndex);
     this.props.getPokemonSpecies(pokemonIndex);
   }
-
-  // let {hp,atack,defense,speed,specialAttack,specialDefense} = ''
-
-  firstLetterUpperCase = name => {
-    if (this.props.name) {
-      return name
-        .toLowerCase()
-        .split(" ")
-        .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-        .join("");
-    }
-  };
 
   render() {
     return (
@@ -59,10 +51,29 @@ export class Pokemon extends Component {
                 />
               </div>
               <div className="col-md-9">
-                <h4 className="mx-auto">
-                  {this.firstLetterUpperCase(this.props.name)}
-                </h4>
+                <PokemonName name={this.props.name} />
                 <PokemonStats stats={this.props.stats} />
+              </div>
+              <div className="row mt-1">
+                <PokemonDesc desc={this.props.pokemonDesc} />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="card-body">
+            <h5 className="card-title text-center">Profile</h5>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="row">
+                  <div className="col-md-6">
+                    <h6 className="float-right">Height:</h6>
+                  </div>
+                  <div className="col-md-6">
+                    <h6 className="float-left">
+                      {this.props.pokemon.height + ` cm`}
+                    </h6>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -65,7 +65,16 @@ function getPokemonData(pokemonIndex) {
 function getPokemonSpec(pokemonIndex) {
   return fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`)
     .then(response => response.json())
-    .then(data => data)
+    .then(data => {
+      let description = "";
+      data.flavor_text_entries.some(flavor => {
+        if (flavor.language.name === "en") {
+          return (description = flavor.flavor_text);
+        }
+      });
+      const dataSpec = { ...data, description };
+      return dataSpec;
+    })
     .catch(
       error =>
         `Your Call For Data went wrong, ${error} check your call if it's correct!`
