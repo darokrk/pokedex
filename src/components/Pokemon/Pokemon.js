@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPokemonData, getPokemonSpecies } from "../../actions/index";
 
+import styled from "styled-components";
+
 import PokemonType from "./PokemonType";
 import PokemonImg from "./PokemonImg";
 import PokemonName from "./PokemonName";
 import PokemonStats from "./PokemonStats";
 import PokemonDesc from "./PokemonDesc";
 import PokemonSpecies from "./PokemonSpecies";
+
+const StyledDataButton = styled.button`
+  line-height: 1;
+`;
 
 const mapStateToProps = ({ pokemon, pokemonSpec }) => {
   return {
@@ -40,24 +46,24 @@ export class Pokemon extends Component {
       pokemonSpec
     } = this.props;
     return (
-      <div className="col-10 mx-auto">
+      <div className="col-12 col-md-10 mx-auto my-3">
         <div className="card">
           <div className="card-header">
             <div className="row">
-              <div className="col-4">
+              <div className="col-12 col-md-4">
                 <h5 className="m-0">{`Pokemon number ${pokemonIndex}`}</h5>
               </div>
-              <div className="col-5 d-flex justify-content-center align-items-center">
+              <div className="col-8 col-md-5 d-flex justify-content-center align-items-center">
                 <PokemonType types={types} />
               </div>
               <div className="col-3 d-flex justify-content-end">
-                <button
+                <StyledDataButton
                   type="button"
                   className="btn btn-danger btn-sm"
                   onClick={history.goBack}
                 >
-                  X
-                </button>
+                  x
+                </StyledDataButton>
               </div>
             </div>
           </div>
