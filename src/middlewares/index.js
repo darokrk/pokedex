@@ -1,22 +1,19 @@
-import { ADD_ARTICLE } from "../constants/action-types";
-import { badWordFound } from "../actions/index";
+import { SEARCH_POKEMON } from "../constants/action-types";
+import { pokemonFound, pokemonNotFound } from "../actions/index";
 
-const forbiddenWords = ["spam", "money"];
-
-export function forbiddenWordsMiddleware({ dispatch }) {
+export function forbiddenWordsMiddleware({ dispatch, getState }) {
   return function(next) {
     return function(action) {
-      if (action.type === ADD_ARTICLE) {
-        const foundWord = forbiddenWords.filter(word =>
-          action.payload.title.includes(word)
+      if (action.type === SEARCH_POKEMON) {
+        const pokemonsStateData = getState().pokemonsData;
+        const foundPokemon = pokemonsStateData.filter(
+          pokemon => action.payload === pokemon.name
         );
-        if (foundWord.length) {
-          const message = `Upsss we saw a forbidden word in your article: ${foundWord}`;
-          return dispatch(
-            badWordFound({
-              title: message
-            })
-          );
+        if (foundPokemon.length) {
+          return dispatch(pokemonFound(foundPokemon));
+        } else {
+          const message = `Upsss we didn't found that pokemon`;
+          return dispatch(pokemonNotFound(message));
         }
       }
       return next(action);

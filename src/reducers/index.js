@@ -1,7 +1,7 @@
 import {
-  ADD_ARTICLE,
-  REMOVE_ARTICLE,
-  FOUND_BAD_WORD,
+  SEARCH_POKEMON,
+  POKEMON_FOUND,
+  POKEMON_NOT_FOUND,
   DATA_LOADED,
   API_ERRORED,
   DATA_POKEMON_LOADED,
@@ -9,39 +9,41 @@ import {
 } from "../constants/action-types";
 
 const initialState = {
-  articles: [],
+  searchingPokemon: "",
   alert: "",
-  remoteArticles: [],
+  pokemonsData: [],
   pokemon: {},
   pokemonSpec: {}
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ARTICLE: {
+    case SEARCH_POKEMON: {
       return {
         ...state,
-        articles: [...state.articles, action.payload],
+        searchingPokemon: action.payload,
         alert: ""
       };
     }
-    case REMOVE_ARTICLE: {
+    case POKEMON_FOUND: {
       return {
         ...state,
-        articles: [...state.articles].filter(el => el.id !== action.id)
+        searchingPokemon: "",
+        pokemonsData: [...action.payload],
+        alert: ""
       };
     }
-    case FOUND_BAD_WORD: {
+    case POKEMON_NOT_FOUND: {
       return {
         ...state,
-        articles: [],
+        searchingPokemon: "",
         alert: action.payload
       };
     }
     case DATA_LOADED: {
       return {
         ...state,
-        remoteArticles: [...state.remoteArticles, ...action.payload]
+        pokemonsData: [...action.payload]
       };
     }
     case API_ERRORED: {

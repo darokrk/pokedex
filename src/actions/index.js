@@ -1,29 +1,29 @@
 import {
-  ADD_ARTICLE,
-  REMOVE_ARTICLE,
-  FOUND_BAD_WORD,
+  SEARCH_POKEMON,
+  POKEMON_FOUND,
+  POKEMON_NOT_FOUND,
   DATA_REQUESTED,
   DATA_POKEMON_REQ,
   DATA_POKEMON_SPEC_REQ
 } from "../constants/action-types";
 
-export const addArticle = payload => {
+export const searchPokemon = payload => {
   return {
-    type: ADD_ARTICLE,
+    type: SEARCH_POKEMON,
     payload
   };
 };
 
-export const removeArticle = id => {
+export const pokemonFound = payload => {
   return {
-    type: REMOVE_ARTICLE,
-    id
+    type: POKEMON_FOUND,
+    payload
   };
 };
 
-export const badWordFound = payload => {
+export const pokemonNotFound = payload => {
   return {
-    type: FOUND_BAD_WORD,
+    type: POKEMON_NOT_FOUND,
     payload
   };
 };

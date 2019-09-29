@@ -1,5 +1,5 @@
 import React from "react";
-import spinner from "../assets/25.gif";
+import spinner from "../../assets/25.gif";
 
 const PokemonImg = ({ imageUrl, imageAlt }) => {
   if (imageUrl) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { TYPE_COLORS } from "../helpers/colors";
+import { TYPE_COLORS } from "../../helpers/colors";
 
 const PokemonType = ({ types }) => {
   if (types) {

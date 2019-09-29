@@ -3,29 +3,27 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import List from "./List";
-import Form from "./Form";
-import Post from "./Posts";
-import Pokemon from "../components/Pokemon";
+import Search from "./Search";
+import PokemonsList from "./PokemonsList";
+import Pokemon from "../components/Pokemon/Pokemon";
+import Alert from "../components/Alert";
 
 const App = () => (
   <BrowserRouter>
     <div className="row mt-5">
       <div className="col-md-4 offset-md-1">
-        <h2>Articles</h2>
-        <List />
+        <h2>Pokedex App</h2>
+        <Alert />
       </div>
       <div className="col-md-4 offset-md-1">
-        <h2>Add a new article</h2>
-        <Form />
+        <h2>Search Your Pokemon</h2>
+        <Search />
       </div>
-
       <div className="col-12">
-        <h2>Pokemons</h2>
+        <h4 className="p-3">Pokemons List</h4>
         <Switch>
-          <Route exact path="/" component={Post} />
+          <Route exact path="/" component={PokemonsList} />
           <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
-          <Post />
         </Switch>
       </div>
     </div>

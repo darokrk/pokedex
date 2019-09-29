@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import spinner from "../assets/25.gif";
+import spinner from "../../assets/25.gif";
 
 import styled from "styled-components";
 
@@ -54,12 +54,13 @@ class PokemonCard extends Component {
       .join("");
 
   render() {
+    const { pokemonIndex, imageLoading, imageUrl, name } = this.state;
     return (
       <ListElement className="col-md-3 col-sm-6 mb-5">
-        <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
+        <StyledLink to={`pokemon/${pokemonIndex}`}>
           <Card className="card">
-            <h5 className="card-header">{this.state.pokemonIndex}</h5>
-            {this.state.imageLoading ? (
+            <h5 className="card-header bg-info text-light">{pokemonIndex}</h5>
+            {imageLoading ? (
               <img
                 src={spinner}
                 style={{ width: "5em", height: "5em" }}
@@ -69,19 +70,13 @@ class PokemonCard extends Component {
             ) : null}
             <SpriteImg
               className="card-img-top rounded mx-auto mt-2"
-              src={this.state.imageUrl}
-              alt={this.state.name}
+              src={imageUrl}
+              alt={name}
               onLoad={() => this.setState({ imageLoading: false })}
-              style={
-                this.state.imageLoading
-                  ? { display: "none" }
-                  : { display: "block" }
-              }
+              style={imageLoading ? { display: "none" } : { display: "block" }}
             />
             <div className="card-body mx-auto">
-              <h6 className="card-title">
-                {this.firstLetterUpperCase(this.state.name)}
-              </h6>
+              <h6 className="card-title">{this.firstLetterUpperCase(name)}</h6>
             </div>
           </Card>
         </StyledLink>
