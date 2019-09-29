@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,7 +9,7 @@ import Pokemon from "../components/Pokemon/Pokemon";
 import Alert from "../components/Alert";
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter basename="/">
     <div className="row mt-5">
       <div className="col-md-4 offset-md-1">
         <h2>Pokedex App</h2>
@@ -27,7 +27,7 @@ const App = () => (
         </Switch>
       </div>
     </div>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default App;
