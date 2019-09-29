@@ -3,7 +3,8 @@ import {
   REMOVE_ARTICLE,
   FOUND_BAD_WORD,
   DATA_REQUESTED,
-  DATA_POKEMON_REQ
+  DATA_POKEMON_REQ,
+  DATA_POKEMON_SPEC_REQ
 } from "../constants/action-types";
 
 export const addArticle = payload => {
@@ -31,4 +32,10 @@ export const getPokemonData = routeParam => ({
   type: DATA_POKEMON_REQ,
   routeParam
 });
+
+export const getPokemonSpecies = routeParam => ({
+  type: DATA_POKEMON_SPEC_REQ,
+  routeParam
+});
+
 export const getData = () => ({ type: DATA_REQUESTED });

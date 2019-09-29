@@ -4,12 +4,15 @@ import {
   DATA_REQUESTED,
   API_ERRORED,
   DATA_POKEMON_REQ,
-  DATA_POKEMON_LOADED
+  DATA_POKEMON_LOADED,
+  DATA_POKEMON_SPEC_REQ,
+  DATA_POKEMON_SPEC_LOADED
 } from "../constants/action-types";
 
 export default function* watcherSaga() {
-  yield takeEvery(DATA_POKEMON_REQ, workerPokemonSaga);
   yield takeEvery(DATA_REQUESTED, workerSaga);
+  yield takeEvery(DATA_POKEMON_REQ, workerPokemonSaga);
+  yield takeEvery(DATA_POKEMON_SPEC_REQ, workerPokemonSpec);
 }
 
 function* workerSaga() {
@@ -30,6 +33,15 @@ function* workerPokemonSaga({ routeParam }) {
   }
 }
 
+function* workerPokemonSpec({ routeParam }) {
+  try {
+    const payload = yield call(() => getPokemonSpec(routeParam));
+    yield put({ type: DATA_POKEMON_SPEC_LOADED, payload });
+  } catch (e) {
+    yield put({ type: API_ERRORED, payload: e });
+  }
+}
+
 function getData() {
   return fetch("https://pokeapi.co/api/v2/pokemon/?limit=40")
     .then(response => response.json())
@@ -42,6 +54,16 @@ function getData() {
 
 function getPokemonData(pokemonIndex) {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`)
+    .then(response => response.json())
+    .then(data => data)
+    .catch(
+      error =>
+        `Your Call For Data went wrong, ${error} check your call if it's correct!`
+    );
+}
+
+function getPokemonSpec(pokemonIndex) {
+  return fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`)
     .then(response => response.json())
     .then(data => data)
     .catch(

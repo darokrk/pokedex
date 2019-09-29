@@ -4,14 +4,16 @@ import {
   FOUND_BAD_WORD,
   DATA_LOADED,
   API_ERRORED,
-  DATA_POKEMON_LOADED
+  DATA_POKEMON_LOADED,
+  DATA_POKEMON_SPEC_LOADED
 } from "../constants/action-types";
 
 const initialState = {
   articles: [],
   alert: "",
   remoteArticles: [],
-  pokemon: {}
+  pokemon: {},
+  pokemonSpec: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -52,6 +54,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemon: { ...action.payload }
+      };
+    }
+    case DATA_POKEMON_SPEC_LOADED: {
+      return {
+        ...state,
+        pokemonSpec: { ...action.payload }
       };
     }
     default:
