@@ -7,6 +7,7 @@ import PokemonImg from "./PokemonImg";
 import PokemonName from "./PokemonName";
 import PokemonStats from "./PokemonStats";
 import PokemonDesc from "./PokemonDesc";
+import PokemonSpecies from "./PokemonSpecies";
 
 const mapStateToProps = ({ pokemon, pokemonSpec }) => {
   return {
@@ -15,7 +16,6 @@ const mapStateToProps = ({ pokemon, pokemonSpec }) => {
     name: pokemon.name,
     imageUrl: pokemon.sprites,
     types: pokemon.types,
-    stats: pokemon.stats,
     pokemonSpec: pokemonSpec,
     pokemonDesc: pokemonSpec.description
   };
@@ -52,7 +52,7 @@ export class Pokemon extends Component {
               </div>
               <div className="col-md-9">
                 <PokemonName name={this.props.name} />
-                <PokemonStats stats={this.props.stats} />
+                <PokemonStats pokemon={this.props.pokemon} />
               </div>
               <div className="row mt-1">
                 <PokemonDesc desc={this.props.pokemonDesc} />
@@ -63,18 +63,7 @@ export class Pokemon extends Component {
           <div className="card-body">
             <h5 className="card-title text-center">Profile</h5>
             <div className="row">
-              <div className="col-md-6">
-                <div className="row">
-                  <div className="col-md-6">
-                    <h6 className="float-right">Height:</h6>
-                  </div>
-                  <div className="col-md-6">
-                    <h6 className="float-left">
-                      {this.props.pokemon.height + ` cm`}
-                    </h6>
-                  </div>
-                </div>
-              </div>
+              <PokemonSpecies pokemonSpec={this.props.pokemonSpec} />
             </div>
           </div>
         </div>

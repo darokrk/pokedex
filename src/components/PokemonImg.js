@@ -7,7 +7,7 @@ const PokemonImg = ({ imageUrl, imageAlt }) => {
       <img
         className="card-img-top rounded mx-auto mt-2"
         src={imageUrl.front_default}
-        alt={`${imageAlt} image`}
+        alt={imageAlt}
       />
     );
   } else {

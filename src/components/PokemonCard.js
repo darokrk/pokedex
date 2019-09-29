@@ -64,12 +64,13 @@ class PokemonCard extends Component {
                 src={spinner}
                 style={{ width: "5em", height: "5em" }}
                 className="card-img-top rounded mx-auto d-block mt-2"
+                alt="spinner"
               ></img>
             ) : null}
             <SpriteImg
               className="card-img-top rounded mx-auto mt-2"
               src={this.state.imageUrl}
-              alt=""
+              alt={this.state.name}
               onLoad={() => this.setState({ imageLoading: false })}
               style={
                 this.state.imageLoading
