@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Search from "./Search";
 import PokemonsList from "./PokemonsList";
 import Pokemon from "../components/Pokemon/Pokemon";
-import Alert from "../components/Alert";
+import Alert from "./Alert/Alert";
 
 const App = () => (
   <BrowserRouter>
