@@ -7,7 +7,7 @@ import {
   DATA_POKEMON_LOADED,
   DATA_POKEMON_SPEC_REQ,
   DATA_POKEMON_SPEC_LOADED
-} from "../constants/action-types";
+} from "../helpers/action-types";
 
 export default function* watcherSaga() {
   yield takeEvery(DATA_REQUESTED, workerSaga);

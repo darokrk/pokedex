@@ -5,7 +5,7 @@ import {
   DATA_REQUESTED,
   DATA_POKEMON_REQ,
   DATA_POKEMON_SPEC_REQ
-} from "../constants/action-types";
+} from "../helpers/action-types";
 
 export const searchPokemon = payload => {
   return {

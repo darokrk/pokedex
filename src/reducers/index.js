@@ -6,7 +6,7 @@ import {
   API_ERRORED,
   DATA_POKEMON_LOADED,
   DATA_POKEMON_SPEC_LOADED
-} from "../constants/action-types";
+} from "../helpers/action-types";
 
 const initialState = {
   searchingPokemon: "",

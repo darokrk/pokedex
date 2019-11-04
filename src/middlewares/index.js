@@ -1,4 +1,4 @@
-import { SEARCH_POKEMON } from "../constants/action-types";
+import { SEARCH_POKEMON } from "../helpers/action-types";
 import { pokemonFound, pokemonNotFound } from "../actions/index";
 
 export function forbiddenWordsMiddleware({ dispatch, getState }) {
