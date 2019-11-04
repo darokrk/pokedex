@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Search from "./Search";
+import Search from "./SearchPokemon/SearchPokemon";
 import PokemonsList from "./PokemonsList";
 import Pokemon from "../components/Pokemon/Pokemon";
 import Alert from "./Alert/Alert";

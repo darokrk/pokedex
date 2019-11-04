@@ -1,11 +1,9 @@
-// import React, { Component } from "react";
 import React, { useState } from "react";
-
 import { connect } from "react-redux";
 
 import styled from "styled-components";
 
-import { searchPokemon, getData } from "../actions/index";
+import { searchPokemon, getData } from "../../actions/index";
 
 const StyledForm = styled.form`
   position: relative;
