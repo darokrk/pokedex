@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getData } from "../actions/index";
 
-import PokemonCard from "./Pokemon/PokemonCard";
+import { getData } from "../../actions/index";
+
+import PokemonCard from "../Pokemon/PokemonCard";
 
 const mapStateToProps = state => {
   return { pokemonsData: state.pokemonsData };
 };
 
-const Post = ({ getData, pokemonsData }) => {
+const PokemonsList = ({ getData, pokemonsData }) => {
   useEffect(() => {
     getData();
   }, [getData]);
@@ -28,4 +29,4 @@ const Post = ({ getData, pokemonsData }) => {
 export default connect(
   mapStateToProps,
   { getData }
-)(Post);
+)(PokemonsList);

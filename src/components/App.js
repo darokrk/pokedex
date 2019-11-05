@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Search from "./SearchPokemon/SearchPokemon";
-import PokemonsList from "./PokemonsList";
+import PokemonsList from "./PokemonsList/PokemonsList";
 import Pokemon from "../components/Pokemon/Pokemon";
 import Alert from "./Alert/Alert";
+import NotFound from "./NotFound/NotFound";
 
 const App = () => (
   <BrowserRouter>
@@ -23,7 +24,8 @@ const App = () => (
         <h4 className="p-3">Pokemons List</h4>
         <Switch>
           <Route exact path="/" component={PokemonsList} />
-          <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
+          <Route path="/pokemon/:pokemonIndex" component={Pokemon} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </div>
