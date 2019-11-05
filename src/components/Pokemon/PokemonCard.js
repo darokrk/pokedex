@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import spinner from "../../assets/25.gif";
 
@@ -30,59 +30,55 @@ const StyledLink = styled(Link)`
   }
 `;
 
-class PokemonCard extends Component {
-  state = {
-    name: "",
-    imageUrl: "",
-    pokemonIndex: "",
-    imageLoading: true
-  };
+const PokemonCard = ({ name, url }) => {
+  const [nameCard, setNameCard] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [pokemonIndex, setPokemonIndex] = useState("");
+  const [imageLoading, setImageLoading] = useState(true);
 
-  componentDidMount() {
-    const { name, url } = this.props;
+  useEffect(() => {
     const pokemonIndex = url.split("/")[url.split("/").length - 2];
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
 
-    this.setState({ name, imageUrl, pokemonIndex });
-  }
+    setNameCard(name);
+    setImageUrl(imageUrl);
+    setPokemonIndex(pokemonIndex);
+  }, [setNameCard, setImageUrl, setPokemonIndex, name, url]);
 
-  firstLetterUpperCase = name =>
-    name
+  const firstLetterUpperCase = nameCard =>
+    nameCard
       .toLowerCase()
       .split(" ")
       .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
       .join("");
 
-  render() {
-    const { pokemonIndex, imageLoading, imageUrl, name } = this.state;
-    return (
-      <ListElement className="col-md-3 col-sm-6 mb-5">
-        <StyledLink to={`pokemon/${pokemonIndex}`}>
-          <Card className="card">
-            <h5 className="card-header bg-info text-light">{pokemonIndex}</h5>
-            {imageLoading ? (
-              <img
-                src={spinner}
-                style={{ width: "5em", height: "5em" }}
-                className="card-img-top rounded mx-auto d-block mt-2"
-                alt="spinner"
-              ></img>
-            ) : null}
-            <SpriteImg
-              className="card-img-top rounded mx-auto mt-2"
-              src={imageUrl}
-              alt={name}
-              onLoad={() => this.setState({ imageLoading: false })}
-              style={imageLoading ? { display: "none" } : { display: "block" }}
-            />
-            <div className="card-body mx-auto">
-              <h6 className="card-title">{this.firstLetterUpperCase(name)}</h6>
-            </div>
-          </Card>
-        </StyledLink>
-      </ListElement>
-    );
-  }
-}
+  return (
+    <ListElement className="col-md-3 col-sm-6 mb-5">
+      <StyledLink to={`pokemon/${pokemonIndex}`}>
+        <Card className="card">
+          <h5 className="card-header bg-info text-light">{pokemonIndex}</h5>
+          {imageLoading ? (
+            <img
+              src={spinner}
+              style={{ width: "5em", height: "5em" }}
+              className="card-img-top rounded mx-auto d-block mt-2"
+              alt="spinner"
+            ></img>
+          ) : null}
+          <SpriteImg
+            className="card-img-top rounded mx-auto mt-2"
+            src={imageUrl}
+            alt={name}
+            onLoad={() => setImageLoading(false)}
+            style={imageLoading ? { display: "none" } : { display: "block" }}
+          />
+          <div className="card-body mx-auto">
+            <h6 className="card-title">{firstLetterUpperCase(nameCard)}</h6>
+          </div>
+        </Card>
+      </StyledLink>
+    </ListElement>
+  );
+};
 
 export default PokemonCard;
