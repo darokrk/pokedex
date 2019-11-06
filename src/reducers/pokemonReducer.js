@@ -7,7 +7,7 @@ import {
 const initialState = {
   searchingPokemon: "",
   alert: ""
-  // pokemonsData: []
+  // searchPokemonData: []
 };
 
 const pokemonReducer = (state = initialState, action) => {
@@ -19,6 +19,14 @@ const pokemonReducer = (state = initialState, action) => {
         alert: ""
       };
     }
+    // case POKEMON_FOUND: {
+    //   return {
+    //     ...state,
+    //     searchingPokemon: "",
+    //     searchPokemonData: [...action.payload],
+    //     alert: ""
+    //   };
+    // }
     case POKEMON_NOT_FOUND: {
       return {
         ...state,

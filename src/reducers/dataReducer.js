@@ -9,7 +9,8 @@ import {
 const initialState = {
   pokemonsData: [],
   pokemon: {},
-  pokemonSpec: {}
+  pokemonSpec: {},
+  searchPokemonData: []
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const dataReducer = (state = initialState, action) => {
     case DATA_LOADED: {
       return {
         ...state,
-        pokemonsData: [...action.payload]
+        pokemonsData: [...action.payload],
+        searchPokemonData: []
       };
     }
     case API_ERRORED: {
@@ -30,7 +32,7 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         searchingPokemon: "",
-        pokemonsData: [...action.payload],
+        searchPokemonData: [...action.payload],
         alert: ""
       };
     }

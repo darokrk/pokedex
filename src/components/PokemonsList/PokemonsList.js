@@ -6,8 +6,9 @@ import { getData } from "../../actions/index";
 import PokemonCard from "../Pokemon/PokemonCard";
 
 const mapStateToProps = state => {
-  // console.log(state);
-  return { pokemonsData: state.data.pokemonsData };
+  if (state.data.searchPokemonData.length === 1) {
+    return { pokemonsData: state.data.searchPokemonData };
+  } else return { pokemonsData: state.data.pokemonsData };
 };
 
 const PokemonsList = ({ getData, pokemonsData }) => {

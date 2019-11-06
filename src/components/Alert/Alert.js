@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const mapStateToProps = state => {
-  return { alert: state.alert };
+const mapStateToProps = ({ pokemon }) => {
+  return { alert: pokemon.alert };
 };
 
 const ConnectedAlert = ({ alert }) => {
