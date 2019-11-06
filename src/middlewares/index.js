@@ -5,7 +5,7 @@ export function forbiddenWordsMiddleware({ dispatch, getState }) {
   return function(next) {
     return function(action) {
       if (action.type === SEARCH_POKEMON) {
-        const pokemonsStateData = getState().pokemonsData;
+        const pokemonsStateData = getState().data.pokemonsData;
         const foundPokemon = pokemonsStateData.filter(
           pokemon => action.payload === pokemon.name
         );

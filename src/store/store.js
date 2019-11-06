@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import rootReducer from "../reducers/index";
+import rootReducer from "../reducers/rootReducer";
 import { forbiddenWordsMiddleware } from "../middlewares";
 import createSagaMiddleware from "redux-saga";
 import apiSaga from "../sagas/api-saga";

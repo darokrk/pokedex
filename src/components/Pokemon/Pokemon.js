@@ -16,15 +16,15 @@ const StyledDataButton = styled.button`
   line-height: 1;
 `;
 
-const mapStateToProps = ({ pokemon, pokemonSpec }) => {
+const mapStateToProps = ({ data }) => {
   return {
-    pokemonIndex: pokemon.id,
-    pokemon: pokemon,
-    name: pokemon.name,
-    imageUrl: pokemon.sprites,
-    types: pokemon.types,
-    pokemonSpec: pokemonSpec,
-    pokemonDesc: pokemonSpec.description
+    pokemonIndex: data.pokemon.id,
+    pokemon: data.pokemon,
+    name: data.pokemon.name,
+    imageUrl: data.pokemon.sprites,
+    types: data.pokemon.types,
+    pokemonSpec: data.pokemonSpec,
+    pokemonDesc: data.pokemonSpec.description
   };
 };
 
