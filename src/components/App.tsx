@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AppLogo from "./AppLogo/AppLogo";
 import Search from "./SearchPokemon/SearchPokemon";
 import PokemonsList from "./PokemonsList/PokemonsList";
-import Pokemon from "../components/Pokemon/Pokemon";
+import Pokemon from "./Pokemon/Pokemon";
 import Alert from "./Alert/Alert";
 import NotFound from "./NotFound/NotFound";
 

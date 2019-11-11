@@ -7,33 +7,33 @@ import {
   DATA_POKEMON_SPEC_REQ
 } from "../helpers/action-types";
 
-export const searchPokemon = payload => {
+export const searchPokemon = (payload: any) => {
   return {
     type: SEARCH_POKEMON,
     payload
   };
 };
 
-export const pokemonFound = payload => {
+export const pokemonFound = (payload: any) => {
   return {
     type: POKEMON_FOUND,
     payload
   };
 };
 
-export const pokemonNotFound = payload => {
+export const pokemonNotFound = (payload: any) => {
   return {
     type: POKEMON_NOT_FOUND,
     payload
   };
 };
 
-export const getPokemonData = routeParam => ({
+export const getPokemonData = (routeParam: string) => ({
   type: DATA_POKEMON_REQ,
   routeParam
 });
 
-export const getPokemonSpecies = routeParam => ({
+export const getPokemonSpecies = (routeParam: string) => ({
   type: DATA_POKEMON_SPEC_REQ,
   routeParam
 });

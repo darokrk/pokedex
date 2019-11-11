@@ -26,9 +26,9 @@ const PokemonSpecies = ({ pokemonSpec }) => {
                     width: `${pokemonSpec.base_happiness}%`,
                     backgroundColor: "#c2185b"
                   }}
-                  aria-valuenow="15"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
+                  aria-valuenow={15}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
                 >
                   <small>{`${pokemonSpec.base_happiness}%`}</small>
                 </div>

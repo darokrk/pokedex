@@ -16,7 +16,7 @@ const StyledDataButton = styled.button`
   line-height: 1;
 `;
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data }: any) => {
   return {
     pokemonIndex: data.pokemon.id,
     pokemon: data.pokemon,
@@ -27,6 +27,19 @@ const mapStateToProps = ({ data }) => {
     pokemonDesc: data.pokemonSpec.description
   };
 };
+
+interface Pokemon {
+  types: string;
+  history: any;
+  imageUrl: string;
+  name: string;
+  pokemon: object;
+  pokemonDesc: string;
+  pokemonSpec: string;
+  getPokemonData: any;
+  getPokemonSpecies: any;
+  match: any;
+}
 
 const Pokemon = ({
   types,
@@ -39,7 +52,7 @@ const Pokemon = ({
   getPokemonData,
   getPokemonSpecies,
   match
-}) => {
+}: Pokemon) => {
   useEffect(() => {
     getPokemonData(match.params.pokemonIndex);
     getPokemonSpecies(match.params.pokemonIndex);

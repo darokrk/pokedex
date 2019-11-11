@@ -13,9 +13,9 @@ const PokemonStatsCell = ({ stats }) => {
                 className="progress-bar"
                 role="progressBar"
                 style={{ width: `${base_stat}%` }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuenow={25}
+                aria-valuemin={0}
+                aria-valuemax={100}
               >
                 <small>{base_stat + `%`}</small>
               </div>

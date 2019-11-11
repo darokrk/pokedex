@@ -30,11 +30,19 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PokemonCard = ({ name, url }) => {
-  const [nameCard, setNameCard] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [pokemonIndex, setPokemonIndex] = useState("");
-  const [imageLoading, setImageLoading] = useState(true);
+interface PokemonCard {
+  name: string;
+  url: string;
+}
+
+const PokemonCard: React.FC<{ name: string; url: string }> = ({
+  name,
+  url
+}) => {
+  const [nameCard, setNameCard] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [pokemonIndex, setPokemonIndex] = useState<string>("");
+  const [imageLoading, setImageLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const pokemonIndex = url.split("/")[url.split("/").length - 2];
@@ -45,7 +53,7 @@ const PokemonCard = ({ name, url }) => {
     setPokemonIndex(pokemonIndex);
   }, [setNameCard, setImageUrl, setPokemonIndex, name, url]);
 
-  const firstLetterUpperCase = nameCard =>
+  const firstLetterUpperCase = (nameCard: string) =>
     nameCard
       .toLowerCase()
       .split(" ")
