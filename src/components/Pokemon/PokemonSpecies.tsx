@@ -1,6 +1,8 @@
 import React from "react";
 
-const PokemonSpecies = ({ pokemonSpec }) => {
+const PokemonSpecies = ({ pokemonSpec }: any) => {
+  // DO OGARNIECIA !!!!!!!!!
+
   if (pokemonSpec) {
     return (
       <>

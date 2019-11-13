@@ -1,6 +1,6 @@
 import React from "react";
 
-const PokemonDesc = ({ desc }) => {
+const PokemonDesc: React.FC<{ desc: string }> = ({ desc }) => {
   if (desc) {
     return (
       <div className="col">

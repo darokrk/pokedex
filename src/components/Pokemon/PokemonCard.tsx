@@ -30,15 +30,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
-interface PokemonCard {
+interface Props {
   name: string;
   url: string;
 }
 
-const PokemonCard: React.FC<{ name: string; url: string }> = ({
-  name,
-  url
-}) => {
+const PokemonCard: React.FC<Props> = ({ name, url }) => {
   const [nameCard, setNameCard] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
   const [pokemonIndex, setPokemonIndex] = useState<string>("");

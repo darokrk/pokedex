@@ -1,6 +1,6 @@
 import React from "react";
 
-const firstLetterUpperCase = name => {
+const firstLetterUpperCase = (name: string) => {
   if (name) {
     return name
       .toLowerCase()
@@ -10,7 +10,7 @@ const firstLetterUpperCase = name => {
   }
 };
 
-const PokemonName = ({ name }) => {
+const PokemonName: React.FC<{ name: string }> = ({ name }) => {
   return <h4 className="mx-auto">{firstLetterUpperCase(name)}</h4>;
 };
 

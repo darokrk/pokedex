@@ -1,7 +1,14 @@
 import React from "react";
 import spinner from "../../assets/25.gif";
 
-const PokemonImg = ({ imageUrl, imageAlt }) => {
+interface Props {
+  imageUrl: {
+    front_default: string;
+  };
+  imageAlt: string;
+}
+
+const PokemonImg: React.FC<Props> = ({ imageUrl, imageAlt }) => {
   if (imageUrl) {
     return (
       <img

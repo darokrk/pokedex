@@ -28,12 +28,29 @@ const mapStateToProps = ({ data }: any) => {
   };
 };
 
-interface Pokemon {
+interface imageUrlProps {
+  front_default: string;
+}
+
+interface StatProps {
+  stat: {
+    name: string;
+  };
+  base_stat: number;
+}
+
+interface PokemonProps {
+  stats: Array<StatProps>;
+  weight: number;
+  height: number;
+}
+
+interface Props {
   types: string;
   history: any;
-  imageUrl: string;
+  imageUrl: imageUrlProps;
   name: string;
-  pokemon: object;
+  pokemon: PokemonProps;
   pokemonDesc: string;
   pokemonSpec: string;
   getPokemonData: any;
@@ -41,7 +58,7 @@ interface Pokemon {
   match: any;
 }
 
-const Pokemon = ({
+const Pokemon: React.FC<Props> = ({
   types,
   history,
   imageUrl,
@@ -52,7 +69,7 @@ const Pokemon = ({
   getPokemonData,
   getPokemonSpecies,
   match
-}: Pokemon) => {
+}) => {
   useEffect(() => {
     getPokemonData(match.params.pokemonIndex);
     getPokemonSpecies(match.params.pokemonIndex);
