@@ -6,14 +6,26 @@ import {
   DATA_POKEMON_SPEC_LOADED
 } from "../helpers/action-types";
 
-const initialState = {
-  pokemonsData: [],
-  pokemon: {},
-  pokemonSpec: {},
-  searchPokemonData: []
+// const initialState = {
+//   pokemonsData: [],
+//   pokemon: {},
+//   pokemonSpec: {},
+//   searchPokemonData: []
+// };
+
+type Actions = {
+  type: string;
+  payload: any;
 };
 
-const dataReducer = (state = initialState, action) => {
+interface initialState {
+  pokemonsData?: [];
+  pokemon: object;
+  pokemonSpec: object;
+  searchPokemonData?: [];
+}
+
+const dataReducer = (state: initialState, action: Actions) => {
   switch (action.type) {
     case DATA_LOADED: {
       return {

@@ -5,19 +5,41 @@ import { getData } from "../../actions/index";
 
 import PokemonCard from "../Pokemon/PokemonCard";
 
-const mapStateToProps = state => {
-  if (state.data.searchPokemonData.length === 1) {
+const mapStateToProps = (state: stateInterface) => {
+  // if (state.data.searchPokemonData.length === 1) {
+  if (state.data.searchPokemonData) {
     return { pokemonsData: state.data.searchPokemonData };
   } else return { pokemonsData: state.data.pokemonsData };
 };
 
-const PokemonsList = ({ getData, pokemonsData }) => {
+interface stateInterface {
+  data: {
+    searchPokemonData: [];
+    pokemonsData: [];
+  };
+}
+
+interface getDataInterface {
+  getData: () => {
+    type: string;
+  };
+  pokemonsData: Array<getPokemonsData>;
+}
+interface getPokemonsData {
+  name: string;
+  url: string;
+}
+
+const PokemonsList: React.FC<getDataInterface> = ({
+  getData,
+  pokemonsData
+}) => {
   useEffect(() => {
     getData();
   }, [getData]);
   return (
     <ul className="d-flex flex-wrap p-0 mt-3">
-      {pokemonsData.map((pokemon, index) => (
+      {pokemonsData.map((pokemon, index: number) => (
         <PokemonCard
           key={new Date().getTime() + index}
           name={pokemon.name}
@@ -28,7 +50,4 @@ const PokemonsList = ({ getData, pokemonsData }) => {
   );
 };
 
-export default connect(
-  mapStateToProps,
-  { getData }
-)(PokemonsList);
+export default connect(mapStateToProps, { getData })(PokemonsList);
