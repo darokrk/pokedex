@@ -1,4 +1,8 @@
-export const TYPE_COLORS = {
+interface TypeColors {
+  [key: string]: string;
+}
+
+export const TYPE_COLORS: TypeColors = {
   bug: "b1c12e",
   dark: "4f3a2d",
   dragon: "755edf",

@@ -11,7 +11,7 @@ interface Props {
   stats: Array<StatProps>;
 }
 
-const PokemonStatsCell: React.FC<Props> = ({ stats }): JSX.Element[] | null => {
+const PokemonStatsCell: React.FC<Props> = ({ stats }): any => {
   if (stats) {
     return stats.map((element, index) => {
       const { stat, base_stat } = element;

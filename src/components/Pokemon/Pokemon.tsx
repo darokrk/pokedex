@@ -45,8 +45,15 @@ interface PokemonProps {
   height: number;
 }
 
+interface TypeProps {
+  slot: number;
+  type: {
+    name: string;
+  };
+}
+
 interface Props {
-  types: string;
+  types: [TypeProps];
   history: any;
   imageUrl: imageUrlProps;
   name: string;
