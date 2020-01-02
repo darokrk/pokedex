@@ -6,8 +6,7 @@ import { getData } from "../../actions/index";
 import PokemonCard from "../Pokemon/PokemonCard";
 
 const mapStateToProps = (state: stateInterface) => {
-  // if (state.data.searchPokemonData.length === 1) {
-  if (state.data.searchPokemonData) {
+  if (state.data.searchPokemonData.length) {
     return { pokemonsData: state.data.searchPokemonData };
   } else return { pokemonsData: state.data.pokemonsData };
 };
@@ -20,9 +19,7 @@ interface stateInterface {
 }
 
 interface getDataInterface {
-  getData: () => {
-    type: string;
-  };
+  getData: Function;
   pokemonsData: Array<getPokemonsData>;
 }
 interface getPokemonsData {

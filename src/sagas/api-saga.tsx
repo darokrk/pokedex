@@ -11,8 +11,8 @@ import {
 
 export default function* watcherSaga() {
   yield takeEvery(DATA_REQUESTED, workerSaga);
-  yield takeEvery(DATA_POKEMON_REQ, workerPokemonSaga);
-  yield takeEvery(DATA_POKEMON_SPEC_REQ, workerPokemonSpec);
+  yield takeEvery<any>(DATA_POKEMON_REQ, workerPokemonSaga);
+  yield takeEvery<any>(DATA_POKEMON_SPEC_REQ, workerPokemonSpec);
 }
 
 function* workerSaga() {
@@ -24,7 +24,7 @@ function* workerSaga() {
   }
 }
 
-function* workerPokemonSaga({ routeParam }) {
+function* workerPokemonSaga({ routeParam }:any) {
   try {
     const payload = yield call(() => getPokemonData(routeParam));
     yield put({ type: DATA_POKEMON_LOADED, payload });
@@ -33,7 +33,7 @@ function* workerPokemonSaga({ routeParam }) {
   }
 }
 
-function* workerPokemonSpec({ routeParam }) {
+function* workerPokemonSpec({ routeParam }:any) {
   try {
     const payload = yield call(() => getPokemonSpec(routeParam));
     yield put({ type: DATA_POKEMON_SPEC_LOADED, payload });
@@ -52,7 +52,7 @@ function getData() {
     );
 }
 
-function getPokemonData(pokemonIndex) {
+function getPokemonData(pokemonIndex:number) {
   return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`)
     .then(response => response.json())
     .then(data => data)
@@ -62,15 +62,16 @@ function getPokemonData(pokemonIndex) {
     );
 }
 
-function getPokemonSpec(pokemonIndex) {
+function getPokemonSpec(pokemonIndex:number) {
   return fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`)
     .then(response => response.json())
     .then(data => {
       let description = "";
-      data.flavor_text_entries.some(flavor => {
+      data.flavor_text_entries.some((flavor:any) => {
         if (flavor.language.name === "en") {
           return (description = flavor.flavor_text);
         }
+        else return description;
       });
       const dataSpec = { ...data, description };
       return dataSpec;

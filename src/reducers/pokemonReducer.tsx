@@ -10,7 +10,7 @@ const initialState = {
   // searchPokemonData: []
 };
 
-const pokemonReducer = (state = initialState, action) => {
+const pokemonReducer = (state:any = initialState, action:any) => {
   switch (action.type) {
     case SEARCH_POKEMON: {
       return {

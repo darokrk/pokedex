@@ -16,19 +16,24 @@ const StyledDataButton = styled.button`
   margin-right: 15px;
 `;
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch:Function) {
   return {
-    searchPokemon: name => dispatch(searchPokemon(name)),
+    searchPokemon: (name:string) => dispatch(searchPokemon(name)),
     getData: () => dispatch(getData())
   };
 }
 
-const ConnectedForm = ({ searchPokemon, getData }) => {
+interface connectedFormInterface {
+  searchPokemon: Function;
+  getData: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
+const ConnectedForm: React.FC<connectedFormInterface> = ({ searchPokemon, getData }) => {
   const [value, setValue] = useState("");
 
-  const handleChange = event => setValue(event.target.value);
+  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     searchPokemon(value);
     setValue("");

@@ -6,6 +6,10 @@ import apiSaga from "../sagas/api-saga";
 
 const initialiseSagaMiddleware = createSagaMiddleware();
 
+declare global {
+  interface Window { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any; }
+}
+
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({

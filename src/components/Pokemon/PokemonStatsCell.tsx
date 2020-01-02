@@ -22,7 +22,7 @@ const PokemonStatsCell: React.FC<Props> = ({ stats }): any => {
             <div className="progress">
               <div
                 className="progress-bar"
-                role="progressBar"
+                // role="progressBar"
                 style={{ width: `${base_stat}%` }}
                 aria-valuenow={25}
                 aria-valuemin={0}
