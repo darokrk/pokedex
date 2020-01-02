@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, HashRouter } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,11 +23,13 @@ const App = () => (
       </div>
       <div className="col-12">
         <h4 className="p-3">Pokemons List</h4>
+        <HashRouter>
         <Switch>
           <Route exact path="/" component={PokemonsList} />
           <Route path="/pokemon/:pokemonIndex" component={Pokemon} />
           <Route component={NotFound} />
         </Switch>
+        </HashRouter>
       </div>
     </div>
   </BrowserRouter>
